@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--<hibernate-configuration>-->
+  <!--<session-factory>-->
+    <!--<property name="connection.url"/>-->
+    <!--<property name="connection.driver_class"/>-->
+    <!--&lt;!&ndash; <property name="connection.username"/> &ndash;&gt;-->
+    <!--&lt;!&ndash; <property name="connection.password"/> &ndash;&gt;-->
+
+    <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
+    <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
+  <!--</session-factory>-->
+<!--</hibernate-configuration>-->
+
+<hibernate-configuration>
+  <session-factory name="HibernateSessionFactory">
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Catalog_IDEA</property>
+    <property name="hibernate.connection.username">Kuramov</property>
+    <property name="hibernate.connection.password">Rehfvif</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <!--<mapping resource="catalog.hbm.xml"/>-->
+  </session-factory>
+</hibernate-configuration>
