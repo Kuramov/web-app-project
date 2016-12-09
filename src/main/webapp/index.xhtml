@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:view>
+    <h:body>
+        <h:form>
+
+        <p:panelGrid columns="1">
+            <p:outputLabel value="Hello, Word!"/>
+            <p:outputLabel value="#{catalogView.catalogs.size()}"/>
+            <p:spacer height="20"/>
+            <p:inputText value="#{newCatalog.jornal}"/>
+            <p:commandButton value="Save catalog" actionListener="#{catalogView.save()}" ajax="false"/>
+            <p:spacer height="20"/>
+            <p:spinner value="#{catalogUpdate.id}"/>
+            <p:inputText value="#{catalogUpdate.journal}"/>
+            <p:commandButton value="Update catalog" actionListener="#{catalogUpdate.update()}" ajax="false"/>
+            <p:spinner value="#{catalogUpdate.id}"/>
+            <p:commandButton value="Delete catalog" actionListener="#{catalogUpdate.deleteCatalog()}" ajax="false"/>
+        </p:panelGrid>
+        <p:spacer height="20"/>
+        <p:dataTable var="catalog" value="#{catalogView.catalogs}">
+            <p:column headerText="Id">
+                <h:outputText value="#{catalog.idCatalog}" />
+            </p:column>
+
+            <p:column headerText="Jornal">
+                <h:outputText value="#{catalog.jornal}" />
+            </p:column>
+
+            <p:column headerText="Editions">
+                <p:dataList value="#{catalog.editions}" var="edition" type="ordered">
+                    #{edition.edition}
+                </p:dataList>
+            </p:column>
+
+        </p:dataTable>
+
+        </h:form>
+    </h:body>
+</f:view>
+</html>

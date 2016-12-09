@@ -15,13 +15,47 @@
 <!--</hibernate-configuration>-->
 
 <hibernate-configuration>
-  <session-factory name="HibernateSessionFactory">
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Catalog_IDEA</property>
-    <property name="hibernate.connection.username">Kuramov</property>
-    <property name="hibernate.connection.password">Rehfvif</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-    <!--<mapping resource="catalog.hbm.xml"/>-->
+  <!--<session-factory name="HibernateSessionFactory">-->
+    <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
+    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Catalog_IDEA</property>-->
+    <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>-->
+    <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+
+  <!--</session-factory>-->
+  <!-- Настройки подключения к БД -->
+  <session-factory>
+
+    <!-- Настройки подключения к БД -->
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+    <property name="connection.url">jdbc:mysql://localhost:3306/Catalog_IDEA?useSSL=false</property>
+
+    <property name="connection.username">Kuramov</property>
+    <property name="connection.password">Rehfvif</property>
+
+    <property name="connection.pool_size">1</property>
+
+    <!-- SQL диалект -->
+    <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+    <!-- Включить автоматическое управление контекстом сессии -->
+    <property name="current_session_context_class">thread</property>
+
+    <!-- Отключение кеша второго уровня  -->
+    <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+    <!-- Вывод в консоль SQL-запросов -->
+    <property name="show_sql">true</property>
+
+    <!--  -->
+    <property name="connection.autocommit">true</property>
+
+    <!-- Подключение объектов сущностей -->
+    <!--<mapping package="ru.kuramov.model"/>-->
+    <mapping class="ru.kuramov.model.Catalog"/>
+    <mapping class="ru.kuramov.model.Article"/>
+    <mapping class="ru.kuramov.model.Edition"/>
+    <mapping class="ru.kuramov.model.Section"/>
+
   </session-factory>
 </hibernate-configuration>
